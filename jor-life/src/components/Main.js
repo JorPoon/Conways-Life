@@ -5,13 +5,15 @@ import Grid from './Grid'
 class Main extends Component {
     constructor(){
         super()
+        this.speed = 100;
+        this.rows = 30;
+        this.cols = 50;
+
         this.state = {
             generation: 0,
             fullGrid: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
         }
-        this.speed = 100;
-        this.rows = 30
-        this.cols = 50
+
     }
 
     
@@ -24,6 +26,7 @@ class Main extends Component {
             fullGrid={this.state.fullGrid}
             rows={this.rows}
             cols={this.cols}
+            selectBox={this.selectBox}
             />
             </div>
         )
