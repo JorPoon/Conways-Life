@@ -9,7 +9,7 @@ class Grid extends Component {
         const width = this.props.cols * 16;
         let rowsArr = []
         let boxClass = "";
-        //create box id for box element
+        //create boxes with id and class (starts out as box dead)
         for(var i = 0; i < this.props.rows; i++) {
             for (var j = 0; j < this.props.cols; j++){
                 let boxID = i + "_" + j

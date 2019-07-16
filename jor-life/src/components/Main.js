@@ -16,6 +16,33 @@ class Main extends Component {
 
     }
 
+    //toggles box's alive or dead state
+    selectBox = (row, col) => {
+        let copyGrid = cloneArray(this.state.fullGrid)
+        copyGrid[row][col] = !copyGrid[row][col]
+        this.setState({
+            fullGrid: copyGrid
+        })
+    }
+
+    //random seeding of boxes to change alive or dead state
+    random = () => {
+        let copyGrid = cloneArray(this.state.fullGrid)
+        for(var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++){
+                if(Math.floor(Math.random() * 5) === 2) {
+                    copyGrid[i][j] = true;
+                }
+            }
+        }
+        this.setState({
+            fullGrid: copyGrid
+        })
+    }
+
+    componentDidMount() {
+        this.random()
+    }
     
     render() {
         return (
@@ -31,6 +58,11 @@ class Main extends Component {
             </div>
         )
     }
+}
+
+//copies nested arrays
+function cloneArray(arr) {
+    return JSON.parse(JSON.stringify(arr))
 }
 
 export default Main
