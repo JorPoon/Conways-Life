@@ -19,7 +19,7 @@ class Grid extends Component {
                     <Box
                         boxClass={boxClass}
                         key={boxID}
-                        boxID={boxID}
+                        id={boxID}
                         row={i}
                         col={j}
                         selectBox={this.props.selectBox}

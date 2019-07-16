@@ -16,6 +16,11 @@ class Main extends Component {
 
     }
 
+    componentDidMount() {
+        this.random()
+        this.play()
+    }
+
     //toggles box's alive or dead state
     selectBox = (row, col) => {
         let copyGrid = cloneArray(this.state.fullGrid)
@@ -30,7 +35,7 @@ class Main extends Component {
         let copyGrid = cloneArray(this.state.fullGrid)
         for(var i = 0; i < this.rows; i++) {
             for (var j = 0; j < this.cols; j++){
-                if(Math.floor(Math.random() * 5) === 2) {
+                if(Math.floor(Math.random() * 3) === 1) {
                     copyGrid[i][j] = true;
                 }
             }
@@ -40,9 +45,43 @@ class Main extends Component {
         })
     }
 
-    componentDidMount() {
-        this.random()
+    
+
+
+    play = () => {
+		clearInterval(this.intervalId);
+		this.intervalId = setInterval(this.lifegen, this.speed);
     }
+    
+    //game of life rules being applied to boxes
+    lifegen = () => {
+        let g = this.state.fullGrid;
+        let g2 = cloneArray(this.state.fullGrid);
+
+        for(var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++){
+                let count = 0;
+                if (i > 0) if (g[i - 1][j]) count++;
+                if (i > 0 && j > 0) if (g[i - 1][j - 1]) count++;
+                if (i > 0 && j < this.cols - 1) if (g[i - 1][j + 1]) count++;
+                if (j < this.cols - 1) if (g[i][j + 1]) count++;
+                if (j > 0) if (g[i][j - 1]) count++;
+                if (i < this.rows - 1) if (g[i + 1][j]) count++;
+                if (i < this.rows - 1 && j > 0) if (g[i + 1][j - 1]) count++;
+                if (i < this.rows - 1 && j < this.cols - 1) if (g[i + 1][j + 1]) count++;
+                if (g[i][j] && (count < 2 || count > 3)) g2[i][j] = false;
+                if (!g[i][j] && count === 3) g2[i][j] = true;
+            }
+        }
+        
+        this.setState({
+            fullGrid: g2,
+            // generation: this.state.generation + 1
+        })
+
+    }
+
+
     
     render() {
         return (
