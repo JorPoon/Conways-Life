@@ -69,7 +69,17 @@ class Main extends Component {
     }
 
     slow = () => {
+        this.speed = 2000
+        this.play()
+    }
+
+    normal = () => {
         this.speed = 1000
+        this.play()
+    }
+
+    fast = () => {
+        this.speed = 100
         this.play()
     }
     
@@ -118,8 +128,8 @@ class Main extends Component {
             <Button onClick={this.pause}>Pause</Button>
             <Button onClick={this.clear}>Clear Grid</Button>
             <Button onClick={this.slow}>Slow</Button>
-            <Button>Normal</Button>
-            <Button>Fast</Button>
+            <Button onClick={this.normal}>Normal</Button>
+            <Button onClick={this.fast}>Fast</Button>
             </div>
         )
     }
