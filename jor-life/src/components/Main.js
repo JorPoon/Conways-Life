@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Grid from './Grid'
-import Button from '@material-ui/core';
+import {Button} from '@material-ui/core';
 
 class Main extends Component {
     constructor(){
@@ -18,8 +18,8 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        this.random()
-        this.play()
+        // this.random()
+        // this.play()
     }
 
     //toggles box's alive or dead state
@@ -50,12 +50,16 @@ class Main extends Component {
 
 
     play = () => {
+        this.random()
 		clearInterval(this.intervalId);
 		this.intervalId = setInterval(this.lifegen, this.speed);
     }
 
     pause = () => {
-		clearInterval(this.intervalId);
+        clearInterval(this.intervalId);
+        this.setState({
+            generation: this.state.generation
+        })
     }
     
     //game of life rules being applied to boxes thorugh random
@@ -81,7 +85,7 @@ class Main extends Component {
         
         this.setState({
             fullGrid: g2,
-            // generation: this.state.generation + 1
+            generation: this.state.generation + 1
         })
 
     }
@@ -99,6 +103,8 @@ class Main extends Component {
             cols={this.cols}
             selectBox={this.selectBox}
             />
+            <Button onClick={this.play}>Play</Button>
+            <Button onClick={this.pause}>Stop</Button>
             </div>
         )
     }
