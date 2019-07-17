@@ -86,13 +86,13 @@ class Main extends Component {
     gridSize = (size) => {
         if (size === "small") {
             this.cols = 20
-            this.rows = 10
+            this.rows = 20
         } else if (size === "medium") {
             this.cols = 50
             this.rows = 30
         } else if (size === "large") {
-            this.cols = 70
-            this.rows = 50
+            this.cols = 75
+            this.rows = 30
         } else {
             alert("Not Available")
         }
