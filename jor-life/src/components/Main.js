@@ -46,9 +46,6 @@ class Main extends Component {
         })
     }
 
-    
-
-
     play = () => {
         this.random()
 		clearInterval(this.intervalId);
@@ -59,6 +56,15 @@ class Main extends Component {
         clearInterval(this.intervalId);
         this.setState({
             generation: this.state.generation
+        })
+    }
+
+    clear = () => {
+        clearInterval(this.intervalId);
+        let new_grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+        this.setState({
+            fullGrid: new_grid,
+            generation: 0
         })
     }
     
@@ -104,7 +110,11 @@ class Main extends Component {
             selectBox={this.selectBox}
             />
             <Button onClick={this.play}>Play</Button>
-            <Button onClick={this.pause}>Stop</Button>
+            <Button onClick={this.pause}>Pause</Button>
+            <Button onClick={this.clear}>Clear Grid</Button>
+            <Button onClick={this.slow}>Slow</Button>
+            <Button>Normal</Button>
+            <Button>Fast</Button>
             </div>
         )
     }
