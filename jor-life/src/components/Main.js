@@ -52,8 +52,12 @@ class Main extends Component {
 		clearInterval(this.intervalId);
 		this.intervalId = setInterval(this.lifegen, this.speed);
     }
+
+    pause = () => {
+		clearInterval(this.intervalId);
+    }
     
-    //game of life rules being applied to boxes
+    //game of life rules being applied to boxes thorugh random
     lifegen = () => {
         let g = this.state.fullGrid;
         let g2 = cloneArray(this.state.fullGrid);
