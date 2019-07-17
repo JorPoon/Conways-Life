@@ -67,6 +67,11 @@ class Main extends Component {
             generation: 0
         })
     }
+
+    slow = () => {
+        this.speed = 1000
+        this.play()
+    }
     
     //game of life rules being applied to boxes thorugh random
     lifegen = () => {
