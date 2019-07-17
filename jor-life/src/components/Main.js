@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Grid from './Grid'
-import {Button} from '@material-ui/core';
+import {Button, ButtonGroup} from '@material-ui/core';
 
 class Main extends Component {
     constructor(){
@@ -82,6 +82,25 @@ class Main extends Component {
         this.speed = 100
         this.play()
     }
+
+    gridSize = (size) => {
+        if (size === "small") {
+            this.cols = 20
+            this.rows = 10
+        } else if (size === "medium") {
+            this.cols = 50
+            this.rows = 30
+        } else if (size === "large") {
+            this.cols = 70
+            this.rows = 50
+        } else {
+            alert("Not Available")
+        }
+        let box = Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+        this.setState({
+            fullGrid: box
+        })
+    }
     
     //game of life rules being applied to boxes thorugh random
     lifegen = () => {
@@ -130,6 +149,10 @@ class Main extends Component {
             <Button onClick={this.slow}>Slow</Button>
             <Button onClick={this.normal}>Normal</Button>
             <Button onClick={this.fast}>Fast</Button>
+            <Button onClick={() => {this.gridSize("small")}}>Small</Button>
+            <Button onClick={() => {this.gridSize("medium")}}>Medium</Button>
+            <Button onClick={() => {this.gridSize("large")}}>large</Button>
+
             </div>
         )
     }
