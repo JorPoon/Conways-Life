@@ -48,6 +48,20 @@ class Main extends Component {
         })
     }
 
+    set = () => {
+        let copyGrid = cloneArray(this.state.fullGrid)
+        for(var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++){
+                if(((i * 3) % 2 === 0) && ((j * 2) % 2 === 0)) {
+                    copyGrid[i][j] = true;
+                }
+            }
+        }
+        this.setState({
+            fullGrid: copyGrid
+        })
+    }
+
     play = () => {
         this.random()
 		clearInterval(this.intervalId);
@@ -132,6 +146,13 @@ class Main extends Component {
 
     }
 
+    preGen1 = () => {
+        this.set()
+		clearInterval(this.intervalId);
+		this.intervalId = setInterval(this.lifegen, this.speed);
+    }
+
+
 
     
     render() {
@@ -139,6 +160,7 @@ class Main extends Component {
             <div className= 'Main'>
             <h1>Conway's Way of Life By Jor</h1>
             <h2>Generations: {this.state.generation}</h2>
+            <Rules/>
             <Controls
                 play={this.play}
                 pause={this.pause}
@@ -147,8 +169,8 @@ class Main extends Component {
                 normal={this.normal}
                 fast={this.fast}
                 gridSize={this.gridSize}
+                preGen1={this.preGen1}
             />
-            <Rules/>
             <Grid 
             fullGrid={this.state.fullGrid}
             rows={this.rows}
@@ -157,15 +179,7 @@ class Main extends Component {
             />
 
             
-            {/* <Button onClick={this.play}>Play</Button>
-            <Button onClick={this.pause}>Pause</Button>
-            <Button onClick={this.clear}>Clear Grid</Button>
-            <Button onClick={this.slow}>Slow</Button>
-            <Button onClick={this.normal}>Normal</Button>
-            <Button onClick={this.fast}>Fast</Button> */}
-            {/* <Button onClick={() => {this.gridSize("small")}}>Small</Button>
-            <Button onClick={() => {this.gridSize("medium")}}>Medium</Button>
-            <Button onClick={() => {this.gridSize("large")}}>large</Button> */}
+            
 
             </div>
         )

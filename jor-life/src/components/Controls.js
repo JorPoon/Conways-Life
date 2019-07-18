@@ -79,6 +79,10 @@ const sizeButton = (size) => {
     props.gridSize(size)
 }
 
+const preGen1 = () => {
+  props.preGen1()
+}
+
   return (
     <div>
       <Button
@@ -178,8 +182,15 @@ const sizeButton = (size) => {
             Large Grid
           </Button>
         </StyledMenuItem>
-
-      
+        <StyledMenuItem>
+          <Button
+            onClick={() => {
+              preGen1();
+            }}
+          >
+            Fixed Generation 1
+          </Button>
+        </StyledMenuItem>
       </StyledMenu>
     </div>
   );
