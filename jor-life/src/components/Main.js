@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Grid from './Grid'
 import {Button, ButtonGroup} from '@material-ui/core';
+import Controls from './Controls'
 
 class Main extends Component {
     constructor(){
@@ -137,21 +138,32 @@ class Main extends Component {
             <div className= 'Main'>
             <h1>Conway's Way of Life By Jor</h1>
             <h2>Generations: {this.state.generation}</h2>
+            <Controls
+                play={this.play}
+                pause={this.pause}
+                clear={this.clear}
+                slow={this.slow}
+                normal={this.normal}
+                fast={this.fast}
+                gridSize={this.gridSize}
+            />
             <Grid 
             fullGrid={this.state.fullGrid}
             rows={this.rows}
             cols={this.cols}
             selectBox={this.selectBox}
             />
-            <Button onClick={this.play}>Play</Button>
+
+            
+            {/* <Button onClick={this.play}>Play</Button>
             <Button onClick={this.pause}>Pause</Button>
             <Button onClick={this.clear}>Clear Grid</Button>
             <Button onClick={this.slow}>Slow</Button>
             <Button onClick={this.normal}>Normal</Button>
-            <Button onClick={this.fast}>Fast</Button>
-            <Button onClick={() => {this.gridSize("small")}}>Small</Button>
+            <Button onClick={this.fast}>Fast</Button> */}
+            {/* <Button onClick={() => {this.gridSize("small")}}>Small</Button>
             <Button onClick={() => {this.gridSize("medium")}}>Medium</Button>
-            <Button onClick={() => {this.gridSize("large")}}>large</Button>
+            <Button onClick={() => {this.gridSize("large")}}>large</Button> */}
 
             </div>
         )
