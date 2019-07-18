@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Grid from './Grid'
+import Rules from './Rules.js'
 import {Button, ButtonGroup} from '@material-ui/core';
 import Controls from './Controls'
 
@@ -147,6 +148,7 @@ class Main extends Component {
                 fast={this.fast}
                 gridSize={this.gridSize}
             />
+            <Rules/>
             <Grid 
             fullGrid={this.state.fullGrid}
             rows={this.rows}
