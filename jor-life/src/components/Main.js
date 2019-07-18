@@ -4,6 +4,7 @@ import Grid from './Grid'
 import Rules from './Rules.js'
 import {Button, ButtonGroup} from '@material-ui/core';
 import Controls from './Controls'
+import About from './About'
 
 class Main extends Component {
     constructor(){
@@ -160,6 +161,7 @@ class Main extends Component {
             <div className= 'Main'>
             <h1>Conway's Way of Life By Jor</h1>
             <h2>Generations: {this.state.generation}</h2>
+            <About/>
             <Rules/>
             <Controls
                 play={this.play}

@@ -75,7 +75,7 @@ class About extends React.Component {
     return (
       <div>
         <Button  color="primary" onClick={this.handleClickOpen}>
-          Rules
+          About Conway's Game
         </Button>
         <Dialog
           onClose={this.handleClose}
@@ -83,21 +83,18 @@ class About extends React.Component {
           open={this.state.open}
         >
           <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-            Rules To Game Of Life
+            The Game
           </DialogTitle>
           <DialogContent dividers>
             <Typography gutterBottom>
-                The game starts with a two dimensional grid of square cells. 
-                Each cell can be in two conditions: "alive" or "dead". 
-                A single cell's condition depends on the interaction of eight neighboring cells.
-                The neighboring cells are the ones vertically, horizontally and diagonally adjacent to 
-                the single cell.
+                What Is A Turing Machine?
             </Typography>
             <Typography gutterBottom>
-               For each generation of the grid, a change occurs for each cell based on these four rules:
+               Conway's game of life was developed to simulate an example of an Turing Machine.
+               This theory was developed by Alan Turing. 
                     
             </Typography>
-            <Typography gutterBottom>
+            {/* <Typography gutterBottom>
             1. A cell dies if it has less than two live neighbors (underpopulation)
             </Typography>
             <Typography gutterBottom>
@@ -108,7 +105,7 @@ class About extends React.Component {
             </Typography>
             <Typography gutterBottom>
             4. A cell becomes alive if it has 3 live neighbors (reproduction)
-            </Typography>
+            </Typography> */}
           </DialogContent>
           {/* <DialogActions>
                 <Router>
